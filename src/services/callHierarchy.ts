@@ -243,6 +243,9 @@ namespace ts.CallHierarchy {
                 }
                 return undefined;
             }
+            if (isVariableDeclaration(location) && location.initializer && isConstNamedExpression(location.initializer)) {
+                return location.initializer;
+            }
             if (isConstructorDeclaration(location)) {
                 if (isValidCallHierarchyDeclaration(location.parent)) {
                     return location.parent;
